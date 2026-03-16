@@ -142,17 +142,6 @@ Possible enhancements:
 
 ---
 
-# 📸 Screenshots
-
-(Add gameplay screenshots here)
-
----
-
-# 📜 License
-
-This project is open source and available under the **MIT License**.
-
----
 
 # 👨‍💻 Author
 
