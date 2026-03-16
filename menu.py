@@ -1,8 +1,9 @@
+import asyncio
 import pygame
 from settings import *
 from game_engine import game
 
-def menu():
+async def menu():
 
     options = ["Player Mode", "AI Mode", "Quit"]
     level_options = ["Easy","Medium","Hard"]
@@ -36,6 +37,7 @@ def menu():
                 screen.blit(txt,(240,150+i*40))
 
         pygame.display.update()
+        await asyncio.sleep(0)
 
         for event in pygame.event.get():
 
@@ -67,7 +69,7 @@ def menu():
 
                         level = level_options[index]
 
-                        game(mode,level)
+                        await game(mode,level)
 
                         selecting_level = False
                         index = 0

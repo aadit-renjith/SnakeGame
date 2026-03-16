@@ -1,3 +1,4 @@
+import asyncio
 import pygame
 from settings import *
 from draw_utils import *
@@ -5,7 +6,7 @@ from ai_engine import ai_move
 from level_system import random_pos, generate_walls, get_speed
 
 
-def game(mode, level):
+async def game(mode, level):
 
     snake = [[300,200]]
     direction = (BLOCK,0)
@@ -83,5 +84,6 @@ def game(mode, level):
         draw_score(score, level)
 
         pygame.display.update()
+        await asyncio.sleep(0)
 
         clock.tick(speed)

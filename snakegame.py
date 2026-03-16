@@ -1,3 +1,4 @@
+import asyncio
 import pygame
 import random
 from collections import deque
@@ -135,7 +136,7 @@ def generate_walls(level):
 # Game
 # ------------------------------
 
-def game(mode, level):
+async def game(mode, level):
 
     snake = [[300,200]]
 
@@ -225,13 +226,14 @@ def game(mode, level):
 
         pygame.display.update()
 
+        await asyncio.sleep(0)
         clock.tick(speed)
 
 # ------------------------------
 # Menu
 # ------------------------------
 
-def menu():
+async def menu():
 
     options = [
         "Player Mode",
@@ -277,6 +279,7 @@ def menu():
                 screen.blit(txt,(240,150+i*40))
 
         pygame.display.update()
+        await asyncio.sleep(0)
 
         for event in pygame.event.get():
 
@@ -309,9 +312,10 @@ def menu():
 
                         level = level_options[index]
 
-                        score = game(mode,level)
+                        score = await game(mode,level)
 
                         selecting_level = False
                         index = 0
 
-menu()
+if __name__ == "__main__":
+    asyncio.run(menu())
